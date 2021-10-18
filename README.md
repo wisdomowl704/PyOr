@@ -1,0 +1,2 @@
+# PyOr
+Python originality game 
