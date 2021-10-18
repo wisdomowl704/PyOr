@@ -1,0 +1,5 @@
+setting:
+  width: 50
+  height: 50
+  window_massage: "迷宫"
+  box_length: 20
