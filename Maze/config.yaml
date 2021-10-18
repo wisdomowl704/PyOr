@@ -1,6 +1,6 @@
-// 迷宫配置
+# 迷宫配置
 setting:
-  width: 50  // 迷宫长多少格
-  height: 50  // 迷宫宽多少格
-  window_massage: "郑的迷宫"  // 窗口标题
-  box_length: 20  // 格子的边长
+  width: 50  # 迷宫长多少格
+  height: 50  # 迷宫宽多少格
+  window_massage: "郑的迷宫"  # 窗口标题
+  box_length: 20  # 格子的边长

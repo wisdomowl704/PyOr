@@ -1,10 +1,10 @@
 import random
-
 import pygame
 import yaml
 import time
+import os
 
-f = open("config.yaml", 'r', encoding='utf-8')
+f = open(f"{os.path.dirname(os.path.realpath(__file__))}/config.yaml", 'r', encoding='utf-8')
 settings = yaml.load(f, Loader=yaml.FullLoader)
 
 length = settings["setting"]["box_length"]
