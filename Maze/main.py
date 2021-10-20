@@ -251,7 +251,7 @@ def main():
         if len(end) >= 2:
             pygame.draw.rect(screen, (0, 0, 225), (end[0], end[1], length, length), 0)
             if f"{end[0]}-{end[1]}" in select.keys():
-                for url_pos in select[f"{end[0]}-{end[1]}"].to_pos[:-1]:
+                for url_pos in select[f"{end[0]}-{end[1]}"].to_pos[1:-1]:
                     pygame.draw.rect(screen, (0, 0, 0), (url_pos[0], url_pos[1], length, length), 0)
 
         if len(select) > 0:

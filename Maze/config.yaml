@@ -1,8 +1,8 @@
 # 迷宫配置
 setting:
-  width: 100  # 迷宫长多少格
-  height: 100  # 迷宫宽多少格
+  width: 20  # 迷宫长多少格
+  height: 20  # 迷宫宽多少格
   window_massage: "郑的迷宫"  # 窗口标题
-  box_length: 10  # 格子的边长
+  box_length: 50  # 格子的边长
   print_mode: 2  # 格子距离深度显示方式1：数字   2：颜色深度
   run_mode: 1  # 迷宫呈现方式  1：生成   2：读取
