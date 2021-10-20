@@ -257,7 +257,6 @@ def main():
         if len(select) > 0:
             pass
 
-
         if Status[2]:
             for pos in z_line:
                 pygame.draw.line(screen, (225, 225, 225), pos[0], pos[1], 1)
