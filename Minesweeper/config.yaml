@@ -1,0 +1,6 @@
+# 迷宫配置
+setting:
+  width: 20  # 横多少格
+  height: 20  # 纵多少格
+  window_massage: "扫雷"  # 窗口标题
+  box_length: 50  # 格子的边长
