@@ -1,6 +1,6 @@
-import random
+from settings import *
 
-from Minesweeper import *
+import random
 
 fj = [
     (-1, -1), (0, -1), (1, -1), (1, 0), (1, 1), (0, 1), (-1, 1), (-1, 0),
@@ -37,11 +37,11 @@ class Ge:
     def for_screen(self):
         # 绘制矩形
         rect = (self.pos[0] + 1, self.pos[1] + 1, length - 1, length - 1)
-        pygame.draw.rect(screen, "blue", rect, width=0)
+        pygame.draw.rect(screen, "#98F5FF", rect, width=0)
 
         # 绘制附近地雷数量
         if self.num in "12345678" or True:
-            surface = font.render(self.num, False, "yellow")
+            surface = font.render(self.num, False, "#8B0000")
             screen.blit(surface, (self.pos[0] + length // 4, self.pos[1]))
 
 
@@ -49,7 +49,7 @@ class Ge:
 def set_weeper(ge_lis: dict):
     pos_lis = list(ge_lis.keys())
 
-    for _ in range(len(pos_lis) // 10):
+    for _ in range(len(pos_lis) // 6):
         new_wp_index = random.randint(0, len(pos_lis) - 1)
         new_wp_pos = pos_lis.pop(new_wp_index)
         ge_lis[new_wp_pos].weeper = True
@@ -75,7 +75,7 @@ def get_num(ge_lis: dict):
 def click_weeper(pos: str, ge_lis: dict):
     cur_ge = ge_lis.get(pos)
 
-    if cur_ge.status == 1:
+    if cur_ge.status != 0:
         return
 
     if cur_ge.num == "0":
@@ -88,6 +88,11 @@ def click_weeper(pos: str, ge_lis: dict):
         cur_ge.status = 1
 
     elif cur_ge.num == "!":
-        print("!!!!!!!!!!!!!!!!!!!")
+        GLOBAL_VUL["over"] = True
 
     cur_ge.for_screen()
+
+
+# 插旗
+def this_is_weeper(pos: str, ge_lis: dict):
+    pass

@@ -20,10 +20,18 @@ pygame.display.set_caption(SETTINGS["setting"]["window_massage"])
 # 文字初始化
 font = pygame.font.SysFont(pygame.font.get_fonts()[0], length - 1)
 
+# 结束文字
+o_font = pygame.font.SysFont(pygame.font.get_fonts()[0], max_width // 8)
+over_font = o_font.render("GAME OVER", False, "red")
+
 weeper_status = {
     0: "null",
     1: "print",
     2: "ok"
+}
+
+GLOBAL_VUL = {
+    "over": False
 }
 
 ges = {}  # 格子map表
