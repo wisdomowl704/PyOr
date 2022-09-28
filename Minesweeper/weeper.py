@@ -21,6 +21,7 @@ class Ge:
         self.fj_pos = []
 
         self.num = "0"
+        self.print = self.num
         self.status = 0
         self.weeper = False
 
@@ -41,8 +42,13 @@ class Ge:
 
         # 绘制附近地雷数量
         if self.num in "12345678" or True:
-            surface = font.render(self.num, False, "#8B0000")
+            surface = font.render(self.print, False, "#8B0000")
             screen.blit(surface, (self.pos[0] + length // 4, self.pos[1]))
+
+    def del_for_screen(self):
+        # 绘制矩形
+        rect = (self.pos[0] + 1, self.pos[1] + 1, length - 1, length - 1)
+        pygame.draw.rect(screen, "black", rect, width=0)
 
 
 # 设置地雷
@@ -54,6 +60,8 @@ def set_weeper(ge_lis: dict):
         new_wp_pos = pos_lis.pop(new_wp_index)
         ge_lis[new_wp_pos].weeper = True
         ge_lis[new_wp_pos].num = "!"
+        ge_lis[new_wp_pos].print = "!"
+        weeper_lis.append(new_wp_pos)
 
 
 # 设置所有格子周围地雷数
@@ -69,6 +77,7 @@ def get_num(ge_lis: dict):
                 num += 1
 
         ge.num = str(num)
+        ge.print = str(num)
 
 
 # 翻雷
@@ -95,4 +104,25 @@ def click_weeper(pos: str, ge_lis: dict):
 
 # 插旗
 def this_is_weeper(pos: str, ge_lis: dict):
-    pass
+    cur_ge = ge_lis.get(pos)
+
+    if cur_ge.status == 0:
+        cur_ge.status = 2
+        cur_ge.print = "*"
+
+        if pos in weeper_lis and cur_ge.weeper:
+            weeper_lis.remove(pos)
+
+        is_weeper_lis.append(pos)
+        cur_ge.for_screen()
+    elif cur_ge.status == 1:
+        return
+    elif cur_ge.status == 2:
+        cur_ge.status = 0
+        cur_ge.print = cur_ge.num
+
+        if pos not in weeper_lis:
+            weeper_lis.append(pos)
+
+        is_weeper_lis.remove(pos)
+        cur_ge.del_for_screen()
